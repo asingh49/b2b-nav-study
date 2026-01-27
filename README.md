@@ -163,4 +163,5 @@ source("analysis.R")
 ## Contact
 
 **Akash Singh**  
+
 Email: singh.akash5553@gmail.com | LinkedIn: https://www.linkedin.com/in/akash55/ | Portfolio: https://uxfol.io/akashsingh
