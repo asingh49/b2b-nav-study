@@ -25,7 +25,7 @@ The methodology reflects real-world UX research practices that I would apply wit
 
 ---
 
-## My Approach
+## Approach
 
 **Study Design:**
 - Between-subjects usability test (n=30, 15 per design)
