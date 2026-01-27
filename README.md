@@ -81,7 +81,7 @@ The methodology reflects real-world UX research practices that I would apply wit
 ![Task Completion Comparison](outputs/task_completion_comparison.png)
 
 *TopBar significantly outperformed Sidebar [t(28) = -2.19, p = .037, d = 0.80]*
-[View Task Performance](outputs/b2b_task_breakdown.png)
+
 ---
 
 ## Skills Demonstrated
