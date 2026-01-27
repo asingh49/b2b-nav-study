@@ -113,6 +113,19 @@ cat("✓ Data created: b2b_navigation_study.csv (n=30)\n\n")
 # 3. DESCRIPTIVE STATISTICS
 # ============================================================================
 
+completion_rate <- df %>% 
+  group_by(design) %>% 
+  reframe(
+    mean_completion = mean(completion_rate),
+
+total_completed = task1_completed + task2_completed + task3_completed +
+  task4_completed + task5_completed,
+completion_rate = total_completed / 5 * 100
+)
+
+#---
+
+
 desc_stats <- df %>% 
   group_by(design) %>% 
   summarise(
@@ -374,10 +387,10 @@ plot_data <- df %>%
 p1 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
   
   # Add individual points (jittered for visibility)
-  geom_jitter(width = 0.15, alpha = 0.5, size = 3.5, color = "gray30") +
+  geom_jitter(width = 0.10, height = 0, alpha = 0.5, size = 3.5, color = "gray30") +
   
   # Add boxplot overlay
-  geom_boxplot(alpha = 0.6, outlier.shape = NA, width = 0.5, 
+  geom_boxplot(alpha = 0.4, outlier.shape = NA, width = 0.5, 
                color = "gray20", linewidth = 0.8) +
   
   # Add mean point (diamond shape)
@@ -398,13 +411,13 @@ p1 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
   ) +
   
   # Add statistical results box (cleaner, no overlap)
-  annotate("rect", xmin = 0.5, xmax = 2.5, ymin = 102, ymax = 113,
-           fill = "white", color = "gray40", alpha = 0.9, linewidth = 0.8) +
+  annotate("rect", xmin = 0.5, xmax = 2.5, ymin = 102, ymax = 115,
+           fill = "white", color = "gray75", alpha = 0.8, linewidth = 0.4) +
   
-  annotate("text", x = 1.5, y = 109,
+  annotate("text", x = 1.5, y = 110,
            label = paste0("t(28) = ", round(abs(t_stat), 2), 
                           ", p = ", format.pval(p_val, digits = 3)),
-           size = 4.5, fontface = "bold", color = "gray20") +
+           size = 4.5, fontface = "bold", color = "gray20", lineheight = 1.8) +
   
   annotate("text", x = 1.5, y = 106,
            label = paste0("Cohen's d = ", round(abs(d_value), 2), 
@@ -440,7 +453,7 @@ p1 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
     plot.subtitle = element_text(size = 13, color = "gray30", hjust = 0, 
                                  margin = margin(b = 20)),
     plot.caption = element_text(size = 9, color = "gray50", hjust = 1, 
-                                margin = margin(t = 15), lineheight = 1.2),
+                                margin = margin(t = 15)),
     axis.title.y = element_text(face = "bold", size = 13, 
                                 margin = margin(r = 10)),
     axis.text = element_text(size = 12, color = "gray20"),
@@ -486,7 +499,7 @@ cat("Creating main visualization...\n")
 p1 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
   
   # Individual points
-  geom_jitter(width = 0.15, alpha = 0.5, size = 3.5, color = "gray30") +
+  geom_jitter(width = 0.20, alpha = 0.5, size = 3.5, color = "gray30") +
   
   # Boxplot
   geom_boxplot(alpha = 0.6, outlier.shape = NA, width = 0.5, 
@@ -541,5 +554,23 @@ ggsave("b2b_navigation_simple_v2.png", p1,
 
 cat("✓ Saved: b2b_navigation_main_result.png\n\n")
 
+completion_summary <- df %>% 
+  group_by(design) %>% 
+  summarise(
+    mean_completion = mean(completion_rate),
+    mean_total_completed = mean(task1_completed + task2_completed + 
+                                  task3_completed + task4_completed + task5_completed)
+  )
+
+# sidebar data only
+sidebar_data <- df %>% 
+  filter(design == "Sidebar")
+
+# topbar data only
+topbar_data <- df %>% 
+  filter(design == "TopBar")
+
+
+hist(df$completion_rate)
 
 summary(df$completion_rate)
