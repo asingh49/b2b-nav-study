@@ -364,15 +364,10 @@ cat("========================================\n")
 cat("CREATING VISUALIZATIONS\n")
 cat("========================================\n\n")
 
+# Set professional color palette (ONCE)
 colors <- c("Sidebar" = "#E74C3C", "TopBar" = "#27AE60")
 
-# ============================================================================
-# VISUALIZATION 1: MAIN RESULT - COMPLETION RATE COMPARISON
-# ============================================================================
-
-cat("Creating main visualization...\n")
-
-# Calculate summary statistics for plotting
+# Calculate summary statistics for plotting (ONCE)
 plot_data <- df %>%
   group_by(design) %>%
   summarise(
@@ -383,34 +378,39 @@ plot_data <- df %>%
     .groups = "drop"
   )
 
-# Create the main chart
+# ============================================================================
+# VISUALIZATION 1: WITH STATS BOX
+# ============================================================================
+
+cat("Creating visualization 1 (with stats box)...\n")
+
 p1 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
   
-  # Add individual points (jittered for visibility)
+  # Individual points
   geom_jitter(width = 0.10, height = 0, alpha = 0.5, size = 3.5, color = "gray30") +
   
-  # Add boxplot overlay
+  # Boxplot
   geom_boxplot(alpha = 0.4, outlier.shape = NA, width = 0.5, 
                color = "gray20", linewidth = 0.8) +
   
-  # Add mean point (diamond shape)
+  # Mean point (diamond)
   stat_summary(fun = mean, geom = "point", shape = 23, size = 7,
                fill = "white", color = "black", stroke = 1.5) +
   
   # Colors
   scale_fill_manual(values = colors) +
   
-  # Clean x-axis labels
+  # X-axis labels
   scale_x_discrete(labels = c("Sidebar\nNavigation", "Top Bar\nNavigation")) +
   
-  # Y-axis with more space at top for annotations
+  # Y-axis with extra space for stats box
   scale_y_continuous(
-    limits = c(0, 115),  # Extended to 115 to make room
+    limits = c(0, 115),
     breaks = seq(0, 100, 20),
     expand = c(0, 0)
   ) +
   
-  # Add statistical results box (cleaner, no overlap)
+  # Stats box
   annotate("rect", xmin = 0.5, xmax = 2.5, ymin = 102, ymax = 115,
            fill = "white", color = "gray75", alpha = 0.8, linewidth = 0.4) +
   
@@ -424,12 +424,10 @@ p1 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
                           " (", interpretation, " effect)"),
            size = 4.5, fontface = "bold", color = "gray20") +
   
-  # Add significance indicator if p < .05
-  {if(p_val < 0.05) 
-    annotate("text", x = 1.5, y = 98, 
-             label = "* Statistically Significant", 
-             size = 4, fontface = "italic", color = "#27AE60")
-  } +
+  # Significance indicator
+  annotate("text", x = 1.5, y = 98, 
+           label = if(p_val < 0.05) "* Statistically Significant" else "", 
+           size = 4, fontface = "italic", color = "#27AE60") +
   
   # Labels
   labs(
@@ -444,7 +442,7 @@ p1 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
                      "Diamond = mean, Box = median & quartiles, Points = individual participants")
   ) +
   
-  # Professional theme
+  # Theme
   theme_minimal(base_size = 14) +
   theme(
     legend.position = "none",
@@ -463,43 +461,22 @@ p1 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
     plot.margin = margin(25, 25, 20, 25)
   )
 
-# Save high-resolution version for portfolio
+# Save version 1
 ggsave("b2b_navigation_main_result.png", p1, 
        width = 12, height = 9, dpi = 300, bg = "white")
 
-cat("✓ Saved: b2b_navigation_main_result.png\n")
-
-
-cat("========================================\n")
-cat("CREATING VISUALIZATIONS\n")
-cat("========================================\n\n")
-
-# Set professional color palette
-colors <- c("Sidebar" = "#E74C3C", "TopBar" = "#27AE60")
-
-# Calculate summary statistics for plotting
-plot_data <- df %>%
-  group_by(design) %>%
-  summarise(
-    mean = mean(completion_rate),
-    sd = sd(completion_rate),
-    n = n(),
-    se = sd / sqrt(n),
-    .groups = "drop"
-  )
-
-cat("Creating main visualization...\n")
+cat("✓ Saved: b2b_navigation_main_result.png\n\n")
 
 # ============================================================================
-# VISUALIZATION 2: SIMPLE COMPLETION RATE COMPARISON
+# VISUALIZATION 2: SIMPLE VERSION (STATS IN SUBTITLE)
 # ============================================================================
 
+cat("Creating visualization 2 (simple version)...\n")
 
-# Create the main chart (SIMPLE VERSION - NO OVERLAP)
-p1 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
+p2 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
   
   # Individual points
-  geom_jitter(width = 0.20, alpha = 0.5, size = 3.5, color = "gray30") +
+  geom_jitter(width = 0.15, height = 0, alpha = 0.5, size = 3.5, color = "gray30") +
   
   # Boxplot
   geom_boxplot(alpha = 0.6, outlier.shape = NA, width = 0.5, 
@@ -515,10 +492,10 @@ p1 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
   # X-axis labels
   scale_x_discrete(labels = c("Sidebar\nNavigation", "Top Bar\nNavigation")) +
   
-  # Y-axis
+  # Y-axis (no extra space needed)
   scale_y_continuous(limits = c(0, 100), breaks = seq(0, 100, 20)) +
   
-  # Labels (all stats in subtitle)
+  # Labels (stats in subtitle)
   labs(
     title = "Task Completion Rate Comparison",
     subtitle = paste0("Top Bar: ", round(plot_data$mean[2], 1), "% | ",
@@ -548,29 +525,19 @@ p1 <- ggplot(df, aes(x = design, y = completion_rate, fill = design)) +
     plot.margin = margin(20, 20, 20, 20)
   )
 
-# Save
-ggsave("b2b_navigation_simple_v2.png", p1, 
+# Save version 2
+ggsave("b2b_navigation_simple_v2.png", p2, 
        width = 12, height = 8, dpi = 300, bg = "white")
 
-cat("✓ Saved: b2b_navigation_main_result.png\n\n")
+cat("✓ Saved: b2b_navigation_simple_v2.png\n\n")
 
-completion_summary <- df %>% 
-  group_by(design) %>% 
-  summarise(
-    mean_completion = mean(completion_rate),
-    mean_total_completed = mean(task1_completed + task2_completed + 
-                                  task3_completed + task4_completed + task5_completed)
-  )
+# ============================================================================
 
-# sidebar data only
-sidebar_data <- df %>% 
-  filter(design == "Sidebar")
+cat("========================================\n")
+cat("✓ ALL VISUALIZATIONS CREATED\n")
+cat("========================================\n\n")
 
-# topbar data only
-topbar_data <- df %>% 
-  filter(design == "TopBar")
+cat("Files created:\n")
+cat("  • b2b_navigation_main_result.png (with stats box)\n")
+cat("  • b2b_navigation_simple_v2.png (stats in subtitle)\n\n")
 
-
-hist(df$completion_rate)
-
-summary(df$completion_rate)
