@@ -4,8 +4,8 @@
 
 ---
 
-## 📊 Portfolio Project Note
-This analysis demonstrates the complete research workflow I use for high-stakes product decisions, from study design through statistical validation to stakeholder recommendations. While the data is synthetic, the methodology mirrors my approach on similar projects.
+## Portfolio Project Note
+This analysis demonstrates the research analysis workflow I use for high-stakes product decisions, from study design through statistical validation and stakeholder recommendations. While the data used is synthetic, the methodology mirrors my approach on similar projects.
 
 **What this project demonstrates:**
 - Between-subjects experimental design for comparative evaluation
