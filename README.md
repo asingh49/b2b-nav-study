@@ -11,7 +11,7 @@ This project uses synthetic data to demonstrate:
 - Statistical analysis in R (t-tests, effect size, assumption checking)
 - Data visualization with ggplot2
 
-The methodology reflects real-world UX research practices that I would apply with actual user recruitment and behavioral data.
+The methodology reflects real-world UX research practices that I would apply with actual user recruitment and behavioral data collected via usability testing.
 
 ---
 ## Project Overview
