@@ -5,10 +5,12 @@
 ---
 
 ## 📊 Portfolio Project Note
+This analysis demonstrates the complete research workflow I use for high-stakes product decisions, from study design through statistical validation to stakeholder recommendations. While the data is synthetic, the methodology mirrors my approach on similar projects.
 
-This project uses synthetic data to demonstrate:
-- Between-subjects experimental design
+**What this project demonstrates:**
+- Between-subjects experimental design for comparative evaluation
 - Statistical analysis in R (t-tests, effect size, assumption checking)
+- Translating statistical findings into business impact and recommendations
 - Data visualization with ggplot2
 
 The methodology reflects real-world UX research practices that I would apply with actual user recruitment and behavioral data collected via usability testing.
@@ -24,17 +26,32 @@ The methodology reflects real-world UX research practices that I would apply wit
 
 ---
 
-## Approach
+## Research Design Decisions
 
-**Study Design:**
-- Between-subjects usability test (n=30, 15 per design)
-- 5 enterprise workflow tasks per participant
-- Primary metric: Task completion rate (behavioral)
-- Statistical analysis: Independent t-test, Cohen's d effect size
+**Between-Subjects Design**
+
+- Avoided learning effects: Each participant sees only one design (navigation patterns can be learned quickly)
+- Cleaner comparison: No fatigue or order effects from testing both designs
+
+## Metrics Selection
+
+**Primary Metric:** Task Completion Rate
+- Direct measure of navigation effectiveness
+- Behavioral data > self-reported for validation decisions
+- Binary outcome (completed/not completed)
+
+
+## Approach
 
 **Design Variants:**
 - **Sidebar Navigation:** Persistent left panel, hierarchical structure
 - **Top Bar Navigation:** Horizontal menu, flat structure, more content space
+
+**Study Design:**
+- Between-subjects usability test (n=30, 15 per design)
+- 5 enterprise workflow tasks per participant
+- Randomized task order to control for sequence effects
+- Success criteria: Task completed without assistance, correct end state reached
 
 **Statistical Analysis:**
 - Assumption checking (normality, equal variances)
@@ -58,7 +75,11 @@ The methodology reflects real-world UX research practices that I would apply wit
 - **Cohen's d = 0.80** (large effect size)
 - **95% CI:** [1.0, 28.4 pp]
 
-**Interpretation:** TopBar achieved 14.7 percentage points higher completion. The large effect size (d = 0.80) confirms this isn't just statistically significant. It's a difference users would notice in practice.
+**Interpretation:** 
+- TopBar achieved 14.7 percentage points (pp) higher completion. The large effect size (d = 0.80) confirms this isn't just statistically significant. It's a difference users would notice in practice.
+
+**What This Means for Users:**
+- A 14.7pp improvement translates to approximately 15% more users successfully completing tasks. For DataPulse's 10K enterprise users, this could mean ~1,500 additional successful task completions daily. The large effect size indicates users would experience noticeably smoother workflows, not marginal improvements.
 
 ---
 
@@ -66,12 +87,19 @@ The methodology reflects real-world UX research practices that I would apply wit
 
 **Recommendation:** Proceed with TopBar navigation
 
-**User benefit:** 15% higher task completion expected in production
+**Rationale:**
+- Statistically significant performance advantage (p = .037)
+- Large practical effect size (d = 0.80)
+
+**Expected User benefit:** 15% higher task completion expected in production
 
 **Value:**
-- Avoided building less efficient Sidebar design
-- Research cost: ~ 2 weeks
+- Avoided building less efficient Sidebar design and potential rework
+- Research investment: ~2 weeks (design + testing + analysis)
 
+**Post-Launch Monitoring Plan**
+- Week 1-4: Monitor support tickets for navigation-related issues
+- Month 2: Analyze production analytics for task completion patterns
 
 ---
 
@@ -152,6 +180,19 @@ source("analysis.R")
 - Cohen's d = 0.80 (large effect per Cohen's guidelines)
 - Indicates practical significance beyond statistical significance
 - Users would notice this performance difference in real-world use
+
+
+## Study Limitations & Future Research
+
+**Limitations**
+- Sample Size:
+    - n=30 is typical for pre-build validation, but I'd recommend n=50+ for high-confidence launch decisions or when engineering cost is very high.
+- Lab Environment:
+    - Testing in controlled conditions doesn't capture real-world interruptions, multitasking, or time pressure that enterprise users face daily.
+- Task Coverage:
+    - 5 tasks represent core workflows but may not reflect all edge cases or advanced user needs.
+- Timeframe:
+    - Single-session testing can't assess learnability over time or retention of navigation patterns.
 
 ---
 
