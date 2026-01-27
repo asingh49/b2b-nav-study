@@ -10,7 +10,6 @@ This project uses synthetic data to demonstrate:
 - Between-subjects experimental design
 - Statistical analysis in R (t-tests, effect size, assumption checking)
 - Data visualization with ggplot2
-- Business-focused research communication
 
 The methodology reflects real-world UX research practices that I would apply with actual user recruitment and behavioral data.
 
@@ -67,12 +66,12 @@ The methodology reflects real-world UX research practices that I would apply wit
 
 **Recommendation:** Proceed with TopBar navigation
 
+**User benefit:** 15% higher task completion expected in production
+
 **Value:**
-- Avoided building less efficient design
+- Avoided building less efficient Sidebar design
 - Research cost: ~ 2 weeks
 
-
-**User benefit:** 15% higher task completion expected in production
 
 ---
 
