@@ -78,7 +78,7 @@ The methodology reflects real-world UX research practices that I would apply wit
 ## Visualizations
 
 ### Main Result
-![Task Completion Comparison](outputs/b2b_navigation_main_result.png)
+![Task Completion Comparison](outputs/task_completion_comparison.png)
 
 *TopBar significantly outperformed Sidebar [t(28) = -2.19, p = .037, d = 0.80]*
 
