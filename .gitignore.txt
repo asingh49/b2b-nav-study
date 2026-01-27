@@ -1,0 +1,17 @@
+# R workspace files
+.RData
+.Rhistory
+
+# RStudio files
+.Rproj.user/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Temporary files
+*~
+*.swp
+
