@@ -1,4 +1,4 @@
-# B2B SaaS Navigation Design Validation Study
+# B2B SaaS Navigation Quantitative Usability Study
 
 **Portfolio project demonstrating quantitative UX research methodology and statistical analysis skills**
 
