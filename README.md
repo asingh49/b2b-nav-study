@@ -82,11 +82,6 @@ The methodology reflects real-world UX research practices that I would apply wit
 
 *TopBar significantly outperformed Sidebar [t(28) = -2.19, p = .037, d = 0.80]*
 
-### Task-Level Breakdown
-![Task Performance](outputs/b2b_task_breakdown.png)
-
-*TopBar excelled on simple/medium tasks; both performed similarly on complex tasks*
-
 ---
 
 ## Skills Demonstrated
