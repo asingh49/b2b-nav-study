@@ -159,12 +159,14 @@ source("analysis.R")
 
 ## Repository Structure
 ```
-├── analysis.R                            # Complete analysis script
+b2b-nav-study/
+├── .gitignore                           # Git ignore rules
+├── README.md                            # Project documentation
+├── analysis.R                           # Complete analysis pipeline
 ├── data/
-│   └── b2b_navigation_study.csv         # Generated dataset
+│   └── b2b_navigation_study.csv        # Generated dataset (n=30)
 └── outputs/
-    ├── b2b_navigation_main_result.png   # Main visualization
-                                         # Task-level heatmap
+    └── b2b_navigation_main_result.png  # Main comparison visualization
 ```
 
 ---
