@@ -164,7 +164,7 @@ source("analysis.R")
 │   └── b2b_navigation_study.csv         # Generated dataset
 └── outputs/
     ├── b2b_navigation_main_result.png   # Main visualization
-    └── b2b_task_breakdown.png           # Task-level heatmap
+                                         # Task-level heatmap
 ```
 
 ---
