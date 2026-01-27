@@ -1,6 +1,6 @@
 # B2B SaaS Navigation Quantitative Usability Study
 
-**Portfolio project demonstrating quantitative UX research methodology and statistical analysis skills**
+**Project demonstrating quantitative UX research methodology and statistical analysis skills in R**
 
 ---
 
