@@ -188,7 +188,7 @@ b2b-nav-study/
 
 **Limitations**
 - Sample Size:
-    - n=30 is typical for pre-build validation, but I'd recommend n=50+ for high-confidence launch decisions or when engineering cost is very high.
+    - n=30 is a small sample. Likely need n=300+ for high-confidence design comparison launch decisions using a Between Subjects study. (https://measuringu.com/sample-size-designs/)
 - Lab Environment:
     - Testing in controlled conditions doesn't capture real-world interruptions, multitasking, or time pressure that enterprise users face daily.
 - Task Coverage:
