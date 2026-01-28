@@ -45,7 +45,7 @@ The methodology reflects real-world UX research practices that I would apply wit
 
 **Design Variants:**
 - **Sidebar Navigation:** Persistent left panel, hierarchical structure
-- **Top Bar Navigation:** Horizontal menu, flat structure, more content space
+- **TopBar Navigation:** Horizontal menu, flat structure, more content space
 
 **Study Design:**
 - Between-subjects usability test (n=30, 15 per design)
@@ -166,7 +166,7 @@ b2b-nav-study/
 ├── data/
 │   └── b2b_navigation_study.csv        # Generated dataset (n=30)
 └── outputs/
-    └── b2b_navigation_main_result.png  # Main comparison visualization
+    └── task_completion_comparison.png  # Main comparison visualization
 ```
 
 ---
