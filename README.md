@@ -18,7 +18,7 @@ The methodology reflects real-world UX research practices that I would apply wit
 ---
 ## Project Overview
 
-**Business Context:** DataPulse Analytics, a B2B SaaS platform serving Fortune 500 data teams, needed to choose between two navigation menu designs before committing engineering resources. The product team required quantitative validation to make a data-backed decision and avoid costly rework.
+**Business Context:** GridFlow Analytics, a B2B SaaS platform serving Fortune 500 data teams, needed to choose between two navigation menu designs before committing engineering resources. The product team required quantitative validation to make a data-backed decision and avoid costly rework.
 
 **Research Question:** Which navigation menu design enables enterprise users to complete workflow tasks more efficiently?
 
@@ -79,7 +79,7 @@ The methodology reflects real-world UX research practices that I would apply wit
 - TopBar achieved 14.7 percentage points (pp) higher completion. The large effect size (d = 0.80) confirms this isn't just statistically significant. It's a difference users would notice in practice.
 
 **What This Means for Users:**
-- A 14.7pp improvement translates to approximately 15% more users successfully completing tasks. For DataPulse's 10K enterprise users, this could mean ~1,500 additional successful task completions daily. The large effect size indicates users would experience noticeably smoother workflows, not marginal improvements.
+- A 14.7pp improvement translates to approximately 15% more users successfully completing tasks. For GridFlow's 10K enterprise users, this could mean ~1,500 additional successful task completions daily. The large effect size indicates users would experience noticeably smoother workflows, not marginal improvements.
 
 ---
 
